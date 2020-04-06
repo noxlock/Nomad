@@ -9,10 +9,9 @@ async function countWords() {
             // AWAIT THE QUERY
             let res = await pool.query('SELECT COUNT(word_id) FROM words') 
             let maxID = res.rows[0].count
-            console.log(maxID)
             return maxID
         } catch(err) {
-            console.log(`ERROR IN countWords FUNCTION, ${error.stack}`)
+            console.log(`ERROR IN countWords FUNCTION, ${err.stack}`)
         }
     
 }
@@ -23,12 +22,10 @@ async function getRandomWord() {
     let text = `SELECT word FROM words WHERE word_id=$1`
     // GENERATE RANDOM WORD_ID TO GRAB 
     let values = [Math.floor(Math.random() * (Math.floor(await countWords()) - Math.ceil(1)) + 1)]
-    console.log(values)
 
     try {
         // ASYNC AWAIT THE QUERY
         let res = await pool.query(text, values)
-        console.log(res.rows[0].word)
         return res.rows[0].word
     } catch(err) {
         console.error(`ERROR IN getRandomWord: ${err}`)
