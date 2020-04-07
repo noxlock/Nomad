@@ -1,11 +1,14 @@
 require('dotenv').config()
-const projectId = 'nomad-1586159363676'
-const location = 'global'
-
 const {TranslationServiceClient} = require('@google-cloud/translate');
 
 // Instantiates a client
 const translationClient = new TranslationServiceClient();
+
+const projectId = 'nomad-1586159363676'
+const location = 'global'
+
+
+
 
 async function translateToGerman(word) {
   // Construct request
@@ -20,14 +23,11 @@ async function translateToGerman(word) {
   try {
     // Run request
     const [response] = await translationClient.translateText(request);
-
-    for (const translation of response.translations) {
-      console.log(`Translation: ${translation.translatedText}`);
-    }
+    console.log(`inside translation function: ${response.translations[0].translatedText}`)
+	return response.translations[0].translatedText
   } catch (error) {
     console.error(error.details);
   }
 }
 
-translateToGerman('me');
-
+module.exports = translateToGerman
