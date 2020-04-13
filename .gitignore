@@ -1,3 +1,5 @@
 node_modules
 .env
 nomad-1586159363676-054e59ff6201.json
+localhost-key.pem
+localhost.pem

@@ -1,8 +1,16 @@
 const express = require('express');
 const db = require('../db.js')
 const rootRouter = express.Router()
+const testAuthRouter = require('./auth/logstatus.js')
 const translate = require('../translate.js')
 const wordData = require('../definition.js')
+
+
+
+rootRouter.use(testAuthRouter)
+
+
+
 
 rootRouter.get("/", async (req, res) => {
     let randomWord = await db.getRandomWord()
