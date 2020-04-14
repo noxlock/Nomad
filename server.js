@@ -7,16 +7,18 @@ const app = express()
 const port = process.env.PORT || 7000
 
 
-const rootRouter = require('./routes/root.js')
+const rootRouter = require('./express/routes/root.js')
 app.use(rootRouter)
 
+console.log(`NODE_ENV = ${process.env.NODE_ENV}`)
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('../client/build'))
+    app.use(express.static('client/build'))
 
     app.get('*', (req, res) => {
-        res.sendFile('../client/build/index.html')
+        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
     })
 }
+console.log(`PATH = ${path.join(__dirname, 'client', 'build', 'index.html')}`)
 
 app.listen(port, () => {
     console.log(`listening on https://127.0.0.1:${port}`)
