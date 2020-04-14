@@ -6,8 +6,6 @@ const wordData = require('../definition.js')
 const cors = require('cors')
 
 
-
-rootRouter.use(testAuthRouter)
 rootRouter.use(cors())
 
 
