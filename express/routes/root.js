@@ -4,26 +4,28 @@ const rootRouter = express.Router()
 const testAuthRouter = require('./auth/logstatus.js')
 const translate = require('../translate.js')
 const wordData = require('../definition.js')
+const cors = require('cors')
 
 
 
 rootRouter.use(testAuthRouter)
+rootRouter.use(cors())
 
 
 
-
-rootRouter.get("/", async (req, res) => {
+rootRouter.get("/getrandomword", async (req, res) => {
     let randomWord = await db.getRandomWord()
     let translatedWord = await translate(randomWord)
     let pronunciation = await wordData.getPronunciation(translatedWord)
     let definition = await wordData.getDefinition(randomWord)
+    let data = {
+        randomWord: randomWord,
+        translatedWord: translatedWord,
+        pronunciation: pronunciation,
+        definition: definition
+    }
     console.log(`inside route: ${randomWord}, ${translatedWord}, ${pronunciation}`)
-    res.send(` <p> Pronunciation: ${pronunciation} </p>
-            <h1> German Word: ${translatedWord} <h1>
-            <h2> Translated to English: ${randomWord} <h2>
-            <h3> Definition: ${definition}
-
-    `)
+    res.send(JSON.stringify(data))
 })
 
 module.exports = rootRouter
