@@ -11,7 +11,8 @@ rootRouter.use(cors())
 
 
 rootRouter.get("/getrandomword", async (req, res) => {
-    let randomWord = await db.getRandomWord()
+    let {randomWord, values} = await db.getRandomWord()
+    console.log(`INSIDE '/' randomword: ${randomWord}, values = ${values}`)
     let translatedWord = await translate(randomWord)
     let pronunciation = await wordData.getPronunciation(translatedWord)
     let definition = await wordData.getDefinition(randomWord)
@@ -19,9 +20,9 @@ rootRouter.get("/getrandomword", async (req, res) => {
         randomWord: randomWord,
         translatedWord: translatedWord,
         pronunciation: pronunciation,
-        definition: definition
+        definition: definition,
+        values: values
     }
-    console.log(`inside route: ${randomWord}, ${translatedWord}, ${pronunciation}`)
     res.send(JSON.stringify(data))
 })
 
