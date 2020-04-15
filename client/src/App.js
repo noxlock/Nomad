@@ -50,6 +50,7 @@ class App extends Component {
 						<h2>{this.state.eng_word}</h2>
 						<p>{this.state.eng_def}</p>
 					</div>
+					<Button variant='contained' color='secondary'>Save</Button>
 
 				<Switch>
 					<Route exact path="/"/>
