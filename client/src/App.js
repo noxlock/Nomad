@@ -52,7 +52,7 @@ class App extends Component {
 					</div>
 
 				<Switch>
-					<Route exact path="/" component={App}/>
+					<Route exact path="/"/>
 					<PrivateRoute path="/profile" component={Profile} />
 					</Switch>
 				</Router>
