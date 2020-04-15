@@ -24,7 +24,7 @@ class App extends Component {
 
 	async componentDidMount() {
 
-		let result = await fetch(`https://nomad-react.herokuapp.com/`)
+		let result = await fetch(`https://nomad-react.herokuapp.com/getrandomword`)
 		result = await result.json()
 		console.log(result)
 		this.setState(
