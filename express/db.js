@@ -26,7 +26,7 @@ async function getRandomWord() {
     try {
         // ASYNC AWAIT THE QUERY
         let res = await pool.query(text, values)
-        console.log(`INSIDE DB.JS values=${values}`)
+        console.log(`INSIDE DB.JS randomword = ${res.rows[0].word} values=${values}`)
         return res.rows[0].word, values
     } catch(err) {
         console.error(`ERROR IN getRandomWord: ${err}`)
