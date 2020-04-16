@@ -27,7 +27,6 @@ class App extends Component {
 
 		let result = await fetch(`https://nomad-react.herokuapp.com/getrandomword`)
 		result = await result.json()
-		console.log(result.values[0])
 		this.setState(
 			{
 				pronunciation: result.pronunciation,

@@ -33,7 +33,6 @@ function SaveButton(props) {
     }
 
     async function handleSave() {
-        console.log(props.client_id, props.client_secret)
         let token = await getAuthToken()
         let userId = await getUserId(token, user.email)
     }
