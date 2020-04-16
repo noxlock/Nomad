@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Button } from '@material-ui/core'	
 import Navbar from './components/Nav.js'
 import fetch from 'node-fetch'
 import { useAuth0 } from "./react-auth0-spa";
@@ -8,6 +7,8 @@ import { Router, Route, Switch } from "react-router-dom";
 import Profile from "./components/Profile";
 import history from "./utils/history";
 import PrivateRoute from "./components/PrivateRoute";
+import SaveButton from "./components/SaveButton.js"
+
 
 
 class App extends Component {
@@ -26,7 +27,7 @@ class App extends Component {
 
 		let result = await fetch(`https://nomad-react.herokuapp.com/getrandomword`)
 		result = await result.json()
-		console.log(result)
+		console.log(result.values[0])
 		this.setState(
 			{
 				pronunciation: result.pronunciation,
@@ -50,11 +51,12 @@ class App extends Component {
 						<h2>{this.state.eng_word}</h2>
 						<p>{this.state.eng_def}</p>
 					</div>
-					<Button variant='contained' color='secondary'>Save</Button>
 
-				<Switch>
-					<Route exact path="/"/>
-					<PrivateRoute path="/profile" component={Profile} />
+					<SaveButton></SaveButton>
+
+					<Switch>
+						<Route exact path="/"/>
+						<PrivateRoute path="/profile" component={Profile} />
 					</Switch>
 				</Router>
 			</div>

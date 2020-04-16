@@ -12,8 +12,7 @@ const Profile = () => {
     <Fragment>
       <img src={user.picture} alt="Profile" />
 
-      <h2>{user.user_id}</h2>
-      <p>{user.email}</p>
+      <h2>{user.email}</h2>
     </Fragment>
   );
 };
