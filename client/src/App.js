@@ -52,7 +52,7 @@ class App extends Component {
 						<p>{this.state.eng_def}</p>
 					</div>
 
-					<SaveButton></SaveButton>
+					<SaveButton client_id={process.env.REACT_APP_CLIENT_ID} client_secret={process.env.REACT_APP_CLIENT_SECRET}></SaveButton>
 
 					<Switch>
 						<Route exact path="/"/>

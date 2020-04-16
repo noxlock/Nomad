@@ -29,7 +29,7 @@ async function getRandomWord() {
         console.log(`INSIDE DB.JS randomword = ${res.rows[0].word} values=${values}`)
         return {
             randomWord: res.rows[0].word,
-            values: values
+            values: values[0]
         }
     } catch(err) {
         console.error(`ERROR IN getRandomWord: ${err}`)

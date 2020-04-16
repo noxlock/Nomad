@@ -1,1 +1,0 @@
-https://nomaddbdump.s3.amazonaws.com/nomad-db.dump?AWSAccessKeyId=AKIA5AYZENQPCAY2YVOO&Expires=1586885956&Signature=XMIHxogWX8W5yETmjJJQ2YQQWaI%3D
