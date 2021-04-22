@@ -1,29 +1,27 @@
 const express = require('express');
-const db = require('../db.js')
-const rootRouter = express.Router()
-const translate = require('../translate.js')
-const wordData = require('../definition.js')
-const cors = require('cors')
+const cors = require('cors');
 
+const db = require('../db.js');
+const translate = require('../translate.js');
+const wordData = require('../definition.js');
 
-rootRouter.use(cors())
+const rootRouter = express.Router();
 
+rootRouter.use(cors());
 
+rootRouter.get('/getrandomword', async (req, res) => {
+	const { randomWord, values } = await db.getRandomWord();
+	const translatedWord = await translate(randomWord);
+	const pronunciation = await wordData.getPronunciation(translatedWord);
+	const definition = await wordData.getDefinition(randomWord);
+	const data = {
+		randomWord,
+		translatedWord,
+		pronunciation,
+		definition,
+		values,
+	};
+	res.send(JSON.stringify(data));
+});
 
-rootRouter.get("/getrandomword", async (req, res) => {
-    let {randomWord, values} = await db.getRandomWord()
-    console.log(`INSIDE '/' randomword: ${randomWord}, values = ${values}`)
-    let translatedWord = await translate(randomWord)
-    let pronunciation = await wordData.getPronunciation(translatedWord)
-    let definition = await wordData.getDefinition(randomWord)
-    let data = {
-        randomWord: randomWord,
-        translatedWord: translatedWord,
-        pronunciation: pronunciation,
-        definition: definition,
-        values: values
-    }
-    res.send(JSON.stringify(data))
-})
-
-module.exports = rootRouter
+module.exports = rootRouter;

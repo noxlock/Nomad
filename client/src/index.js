@@ -18,18 +18,18 @@ const onRedirectCallback = appState => {
 };
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Auth0Provider
-    domain={config.domain}
-    client_id={config.clientId}
-    redirect_uri={window.location.origin}
-    onRedirectCallback={onRedirectCallback}
-  >
-     <ThemeProvider theme={theme}>
-    <App />
-    </ThemeProvider>
-    </Auth0Provider>
-  </React.StrictMode>,
+    <React.StrictMode>
+        <Auth0Provider
+            domain={config.domain}
+            client_id={config.clientId}
+            redirect_uri={window.location.origin}
+            onRedirectCallback={onRedirectCallback}
+        >
+            <ThemeProvider theme={theme}>
+                <App />
+            </ThemeProvider>
+        </Auth0Provider>
+    </React.StrictMode>,
   document.getElementById('root')
 );
 
