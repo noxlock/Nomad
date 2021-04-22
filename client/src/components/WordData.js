@@ -14,7 +14,7 @@ class WordData extends Component {
 
     async componentDidMount() {
 
-		let result = await fetch(`https://nomad-react.herokuapp.com/getrandomword`)
+		let result = await fetch(`http://localhost:7000/getrandomword`)
 		result = await result.json()
 		this.setState(
 			{

@@ -23,6 +23,6 @@ if (process.env.NODE_ENV === 'production') {
 console.log(`PATH = ${path.join(__dirname, 'client', 'build', 'index.html')}`)
 
 app.listen(port, () => {
-    console.log(`listening on https://127.0.0.1:${port}`)
+    console.log(`listening on http://127.0.0.1:${port}`)
 })
 
