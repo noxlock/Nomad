@@ -1,4 +1,22 @@
+
+
 # T4A2-A
+
+## Foreword
+
+**THIS PROJECT IS CURRENTLY POSTPONED**
+
+### Why is this project postponed?
+
+I struggled a lot with motivation during the making of this project, and I think it's best that I come back to it another time, as it's currently holding me back from learning new things.
+
+It's pretty close to finished, I just need to add one last feature, but I'm much more interested in learning some other technologies at the moment, and I'm going to fall behind if I don't.
+
+
+
+### Where are your commits?
+
+I'm working locally and deploying directly to Heroku using `heroku-postbuilds`, without using GitHub as a middleman. Otherwise, I end up committing my GCP key, and that's no good. This is why there's a giant gap in my commits.
 
 
 
